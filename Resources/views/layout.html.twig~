@@ -1,0 +1,14 @@
+{# src/Baml/ChatBundle/Resources/views/layout.html.twig #}
+
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+  Messenger - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+  {# On définit un nouveau bloc, que les vues du bundle pourront remplir #}
+  {% block baml_chat_body %}
+  {% endblock %}
+
+{% endblock %}

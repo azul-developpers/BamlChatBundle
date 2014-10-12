@@ -1,0 +1,27 @@
+<div class="well">
+  <form id="formMessage" action="{{ path('baml_chat_new_message',{ 'id': conversation.id }) }}" method="post" class="form-horizontal" {{ form_enctype(form) }}>
+<fieldset>
+<!-- Text input-->
+
+<div class="control-group">
+{{ form_label(form.text) }} <br/>
+  <div class="controls">
+{{ form_widget(form.text) }}
+</div>
+{{ form_errors(form.text) }}
+</div>
+
+{{ form_rest(form) }}
+<!-- Button -->
+<div class="control-group">
+  <label class="control-label" for="_submit"></label>
+  <div class="controls">
+    <input type="submit" id="_submit" name="_submit" class="btn btn-success" value="Envoyer" />
+  </div>
+</div>
+<i id="spinner" class="fa fa-spinner fa-spin"></i>
+</fieldset>
+</form>
+</div>
+
+

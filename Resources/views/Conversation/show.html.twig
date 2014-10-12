@@ -1,0 +1,32 @@
+{% extends "BamlChatBundle::layout.html.twig" %}
+
+    {% block title %}
+      Chat - {{ parent() }}
+    {% endblock %}
+
+    {% block baml_chat_body %}
+        {% if app.request.isXmlHttpRequest() %}
+            {% include "BamlChatBundle:Conversation:listMessage.html.twig" %}
+        {% else %}
+      <h2>{{conversation.title}}</h2>
+    <div id="lienAjax" class=""{{ path('baml_chat_list_ajax', {'conversation': conversation.id}) }}" style="display:none"></div>
+    <div id="content">  
+
+        {% include "BamlChatBundle:Conversation:listMessage.html.twig" %}
+
+    </div>
+    {% include "BamlChatBundle:Conversation:formMessage.html.twig" %}
+
+      <p>
+        <a href="{{ path('baml_chat_list_conversation') }}" class="btn btn-primary">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+          Retour à la liste des conversations
+        </a>
+      </p>
+    {% endif %}
+    {% endblock %}
+    {% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript" src="{{ asset('bundles/bamlchat/js/chat_ajax.js') }}"></script>
+    {% endblock %}
+

@@ -1,0 +1,37 @@
+<div class="well">
+  <form method="post" class="form-horizontal" {{ form_enctype(form) }}>
+<fieldset>
+
+<!-- Form Name -->
+<legend>Création d'une conversation</legend>
+<!-- Text input-->
+
+<div class="control-group">
+{{ form_label(form.title) }} <br/>
+  <div class="controls">
+{{ form_widget(form.title) }}
+</div>
+{{ form_errors(form.title) }}
+</div>
+
+
+<div class="control-group">
+{{ form_label(form.participants) }} <br/>
+  <div class="controls">
+{{ form_widget(form.participants) }}
+</div>
+{{ form_errors(form.participants) }}
+</div>
+
+{{ form_rest(form) }}
+<!-- Button -->
+<div class="control-group">
+  <label class="control-label" for="_submit"></label>
+  <div class="controls">
+    <input type="submit" id="_submit" name="_submit" class="btn btn-succes" value="Enregister" />
+  </div>
+</div>
+
+</fieldset>
+</form>
+</div>

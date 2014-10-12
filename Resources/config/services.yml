@@ -1,0 +1,7 @@
+parameters:
+#    baml_chat.example.class: Baml\ChatBundle\Example
+
+services:
+#    baml_chat.example:
+#        class: %baml_chat.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

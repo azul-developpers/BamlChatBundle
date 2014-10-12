@@ -1,0 +1,21 @@
+{% extends "BamlChatBundle::layout.html.twig" %}
+
+{% block title %}
+  Conversations - {{ parent() }}
+{% endblock %}
+
+{% block baml_chat_body %}
+
+  <h2>Nouvelle conversation</h2>
+
+
+  {% include "BamlChatBundle:Conversation:form.html.twig" %}
+  
+  <p>
+    <a href="{{ path('baml_chat_list_conversation') }}" class="btn btn-primary">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      Retour à la liste conversations
+    </a>
+  </p>
+
+{% endblock %}
