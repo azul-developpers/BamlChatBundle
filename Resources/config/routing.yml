@@ -4,16 +4,19 @@ baml_chat_list_conversation:
 baml_chat_new_conversation:
     path:   /conversation/new
     defaults: { _controller: BamlChatBundle:Chat:newConversation }
-baml_chat_conversation:
-    path:   /conversation/{id}
-    defaults: { _controller: BamlChatBundle:Chat:seeConversation }
+
 baml_chat_new_message:
     path:   /conversation/newMessage/{id}
     defaults: { _controller: BamlChatBundle:Chat:newMessage }
     requirements:
         _method:  POST
 baml_chat_list_ajax:
-    path:  /conversation/list/{conversation}
+    path:  /conversation/list/{id}
     defaults: { _controller: BamlChatBundle:Chat:listMessage }
     requirements:
         _method: POST
+baml_chat_conversation:
+    path:   /conversation/{id}
+    defaults: { _controller: BamlChatBundle:Chat:seeConversation }
+    requirements:
+        _method: GET

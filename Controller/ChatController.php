@@ -125,7 +125,14 @@ class ChatController extends Controller
                      ->getManager()
                      ->getRepository('BamlChatBundle:Conversation')
                      ->find($id);
-		return array('conversation'=>$conversation);
+		$messages=$conversation->getMessages();
+		/*$response = new JsonResponse();
+		$response->setData(array('messages'=>$messages));
+		return $response;*/
+		return $this->render('BamlChatBundle:Conversation:listMessage_ajax.html.twig', array(
+			'conversation'   => $conversation
+		));			
+		
 
 	}	
 }

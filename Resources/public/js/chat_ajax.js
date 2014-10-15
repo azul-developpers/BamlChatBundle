@@ -1,10 +1,10 @@
 $(document).ready(function(){
     $("#spinner").hide();
-    var lienAjax=$('#lienAjax').attr("class");
-    var lien=$("#formMessage").attr("action");
     $("#_submit").click(function(e){
-        $("#spinner").show();
         e.preventDefault();
+        $("#spinner").show();
+        var lien=$("#formMessage").attr("action");
+
         $.post(
            lien,
            $( "#formMessage" ).serialize(),
@@ -16,14 +16,12 @@ $(document).ready(function(){
 
     function updateChat()
     {
-        console.log('Update');
-        if (this.timer)
-            clearTimeout(this.timer);
-        
+        var lienAjax=$("#lienAjax").attr('class');
+        var donnee=$("td[style]").last().html();
         $.post(lienAjax, function(data) {
-            $('#content').html(data);
+            $("#content").html(data);
         });
-        this.timer = setTimeout(updateChat(), 5000);
+        
     }
     function postMessage(data)
     {
@@ -32,6 +30,8 @@ $(document).ready(function(){
         
         
     }
+    
+    setInterval(updateChat, 5000);
 
     
 });

@@ -5,11 +5,8 @@
     {% endblock %}
 
     {% block baml_chat_body %}
-        {% if app.request.isXmlHttpRequest() %}
-            {% include "BamlChatBundle:Conversation:listMessage.html.twig" %}
-        {% else %}
       <h2>{{conversation.title}}</h2>
-    <div id="lienAjax" class=""{{ path('baml_chat_list_ajax', {'conversation': conversation.id}) }}" style="display:none"></div>
+    
     <div id="content">  
 
         {% include "BamlChatBundle:Conversation:listMessage.html.twig" %}
@@ -23,7 +20,6 @@
           Retour à la liste des conversations
         </a>
       </p>
-    {% endif %}
     {% endblock %}
     {% block javascripts %}
     {{parent()}}
