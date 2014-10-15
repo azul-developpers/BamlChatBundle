@@ -19,7 +19,7 @@ $(document).ready(function(){
         var lienAjax=$("#lienAjax").attr('class');
         var donnee=$("td[style]").last().html();
         $.post(lienAjax, function(data) {
-            $("#content").html(data);
+            $("#content-table").html(data);
         });
         
     }

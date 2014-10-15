@@ -1,4 +1,3 @@
-<table id="listeMessage" class="table table-striped table-bordered">
   <tr>
     <th width="70">Auteurs</th>
     <th>Message</th>
@@ -11,5 +10,5 @@
       <td>{{ message.sendDate|date('d/m/Y-H:i') }}</td>
     </tr>
   {% endfor %}
-</table>
+
 

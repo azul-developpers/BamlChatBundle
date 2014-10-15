@@ -6,12 +6,14 @@
 
     {% block baml_chat_body %}
       <h2>{{conversation.title}}</h2>
-    
+    {% block baml_chat_content %}
+    <div id="lienAjax" class="{{ path('baml_chat_list_ajax', {'id': conversation.id}) }}" style="display:none"></div>
     <div id="content">  
 
         {% include "BamlChatBundle:Conversation:listMessage.html.twig" %}
 
     </div>
+    {% endblock %}
     {% include "BamlChatBundle:Conversation:formMessage.html.twig" %}
 
       <p>

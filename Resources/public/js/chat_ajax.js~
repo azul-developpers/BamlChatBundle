@@ -19,7 +19,7 @@ $(document).ready(function(){
         var lienAjax=$("#lienAjax").attr('class');
         var donnee=$("td[style]").last().html();
         $.post(lienAjax, function(data) {
-            $("#content").html(data);
+            $("#listeMessage").html(data);
         });
         
     }
@@ -31,7 +31,7 @@ $(document).ready(function(){
         
     }
     
-    setTimeout(setInterval(updateChat(), 5000),5000);
+    setInterval(updateChat, 5000);
 
     
 });
