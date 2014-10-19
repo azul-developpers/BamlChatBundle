@@ -20,3 +20,17 @@
     padding-left:10px;
     border:1px outset black;
 }
+#liste_conversation{
+    display:inline;
+    width:100px;
+}
+#bouton_add_conversation{
+    display:inline;
+    padding: 2px;
+    padding-right: 0px;
+    padding-left: 4px;
+}
+#conversation{
+    margin:0 auto 0 auto;
+    padding: 0 auto 0 auto;
+}

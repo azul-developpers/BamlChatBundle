@@ -1,30 +1,12 @@
 {% extends "BamlChatBundle::layout.html.twig" %}
 
-{% block title %}
-  Conversations - {{ parent() }}
-{% endblock %}
-
 {% block baml_chat_body %}
-
-  <h2>Liste des conversations</h2>
-
-<table class="table table-striped table-bordered">
-  <tr>
-    <th width="70">Nom</th>
-    <th>Participants</th>
-    <th>Lien</th>
-  </tr>
-  {% for conversation in conversations %}
-    <tr>
-      <td>{{ conversation.title }}</td>
-      <td>   <ul> {% for participant in conversation.participants %}
-        <li>{{ participant.username }}</li>
-    {% endfor %}</ul></td>
-    <td><a href="{{path('baml_chat_conversation',{'id': conversation.id})}}" class="btn btn-success"><span class="glyphicon glyphicon-comment"></span>Go</a></td>
-    </tr>
-  {% endfor %}
-</table>
-
-<a href="{{path('baml_chat_new_conversation')}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>Nouvelle conversation</a>
-
+  <div id="conversation">
+  <select id="liste_conversation" name="liste_conversation">
+        {% for conversation in conversations %}
+            <option value="{{conversation.id}}">{{ conversation.title }}</option>
+        {% endfor %}
+  </select>
+<a href="{{path('baml_chat_new_conversation')}}" class="btn btn-primary" id="bouton_add_conversation"><span class="glyphicon glyphicon-plus"></span></a>
+</div> <br/>
 {% endblock %}

@@ -1,5 +1,6 @@
 $(document).ready(function(){
     $("#spinner").hide();
+    
     function sendMessage(e)
     {
         $("#spinner").show();
@@ -19,7 +20,6 @@ $(document).ready(function(){
     function updateChat()
     {
         var lienAjax=$("#lienAjax").attr('class');
-        var donnee=$("td[style]").last().html();
         $.post(lienAjax, function(data) {
             $("#content-table").html(data);
         });
@@ -39,6 +39,13 @@ $(document).ready(function(){
             sendMessage(e);
         
         }
+    });
+    $('#liste_conversation').on('change',function(e){
+        var chaine =     $("#lienAjax").attr('class');
+        var longueur = chaine.length;
+        var sous_chaine=chaine.substr(0,longueur-1);
+        $("#lienAjax").attr('class',sous_chaine+$('#liste_conversation').val());
+        updateChat();
     });
     setInterval(updateChat, 5000);
 
