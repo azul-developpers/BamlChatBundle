@@ -7,7 +7,6 @@
 {% endblock %}
 
 {% block body %}
-  {# On définit un nouveau bloc, que les vues du bundle pourront remplir #}
   {% block baml_chat_body %}
   {% endblock %}
 
