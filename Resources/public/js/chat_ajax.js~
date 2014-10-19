@@ -11,7 +11,7 @@ $(document).ready(function(){
            postMessage
         );
         $("#baml_chatbundle_message_text").val('');
-        $("#spinner").hide();
+        
     }); 
 
     function updateChat()
@@ -27,7 +27,7 @@ $(document).ready(function(){
     {
         
         $('#listeMessage tr:last').after('<tr><td>'+data.author+'</td><td>'+data.text+'</td><td>'+data.date.date+'</td></tr>');
-        
+        $("#spinner").hide();
         
     }
     

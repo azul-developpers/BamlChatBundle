@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $("#spinner").hide();
-    $("#_submit").click(function(e){
+    $("#chat_submit").click(function(e){
         e.preventDefault();
         $("#spinner").show();
         var lien=$("#formMessage").attr("action");
