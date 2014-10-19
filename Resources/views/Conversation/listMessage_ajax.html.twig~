@@ -1,14 +1,17 @@
-  <tr>
-    <th width="70">Auteurs</th>
-    <th>Message</th>
-    <th>Date d'envoi</th>
-  </tr>
+<div id="listeMessage" >
   {% for message in conversation.messages %}
-    <tr>
+  <div class="{{message.id}}">
+    <b>{{ message.author }}</b>
+    <div>
+        {{ message.text }}
+    </div>
+  </div>
+   {# <tr>
+      <td style="display:none">{{message.id}}</td>
       <td>{{ message.author }}</td>
       <td>{{ message.text }}</td>
       <td>{{ message.sendDate|date('d/m/Y-H:i') }}</td>
-    </tr>
+    </tr> #}
   {% endfor %}
-
+</div>
 

@@ -2,7 +2,7 @@
 
 
     {% block baml_chat_body %}
-      <h2>{{conversation.title}}</h2>
+      <h4>{{conversation.title}}</h4>
     {% block baml_chat_content %}
     <div id="lienAjax" class="{{ path('baml_chat_list_ajax', {'id': conversation.id}) }}" style="display:none"></div>
     <div id="content">  
