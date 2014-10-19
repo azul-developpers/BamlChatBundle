@@ -42,10 +42,13 @@ $(document).ready(function(){
     });
     $('#liste_conversation').on('change',function(e){
         var chaine =     $("#lienAjax").attr('class');
+        var chaine2= $("#formMessage").attr("action");
         var longueur = chaine.length;
+        var longueur2=chaine2.length;
         var sous_chaine=chaine.substr(0,longueur-1);
-        alert(sous_chaine);
+        var sous_chaine2=chaine2.substr(0,longueur2-1);
         $("#lienAjax").attr('class',sous_chaine+$('#liste_conversation').val());
+        $("#formMessage").attr("action",)sous_chaine2+$('#liste_conversation').val(;
         updateChat();
     });
     setInterval(updateChat, 5000);
