@@ -1,17 +1,19 @@
 $(document).ready(function(){
     $("#spinner").hide();
-    $("#_submit").click(function(e){
-        e.preventDefault();
+    function sendMessage(e)
+    {
         $("#spinner").show();
         var lien=$("#formMessage").attr("action");
-
         $.post(
            lien,
            $( "#formMessage" ).serialize(),
            postMessage
         );
         $("#baml_chatbundle_message_text").val('');
-        
+    }
+    $("#chat_submit").click(function(e){
+        e.preventDefault();
+        sendMessage(e);
     }); 
 
     function updateChat()
@@ -30,7 +32,14 @@ $(document).ready(function(){
         $("#spinner").hide();
         
     }
-    
+    $('#baml_chatbundle_message_text').on('keydown', function(e) {
+        if (e.which == 13 || event.keyCode == 13) 
+        {
+            e.preventDefault();
+            sendMessage(event);
+        
+        }
+    });
     setInterval(updateChat, 5000);
 
     

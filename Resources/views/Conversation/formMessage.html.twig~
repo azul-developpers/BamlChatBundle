@@ -1,8 +1,8 @@
 <form id="formMessage" action="{{ path('baml_chat_new_message',{ 'id': conversation.id }) }}" method="post" class="form-horizontal" {{ form_enctype(form) }}>
 
 
-{{ form_widget(form.text) }}
-<input type="submit" id="_submit" name="_submit" class="btn btn-success" value="Envoyer" />
+{{ form_widget(form.text,{ 'attr': {'onkeypress': 'onKeyListener(event)'} }) }}
+<input type="submit" id="chat_submit" name="chat_submit" class="btn btn-success" value="Envoyer" />
 <i id="spinner" class="fa fa-spinner fa-spin"></i>
 {{ form_rest(form) }}
 </form>
