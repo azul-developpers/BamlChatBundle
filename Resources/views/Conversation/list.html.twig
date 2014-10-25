@@ -2,7 +2,7 @@
 
 {% block baml_chat_body %}
   <div id="conversation">
-  <select id="liste_conversation" name="liste_conversation">
+  <select class="selectpicker" id="liste_conversation" name="liste_conversation" data-style="btn-success">
         {% for conversation in conversations %}
             <option value="{{conversation.id}}">{{ conversation.title }}</option>
         {% endfor %}

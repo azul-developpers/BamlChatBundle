@@ -2,9 +2,10 @@
     {% block baml_chat_body %}
     {% block baml_chat_content %}
     <div id="lienAjax" class="{{ path('baml_chat_list_ajax', {'id': conversation.id}) }}" style="display:none"></div>
-    <div id="content">  
+    <div id="content_message">  
         {% include "BamlChatBundle:Conversation:listMessage.html.twig" %}
     </div>
+    <br/>
     {% endblock %}
     {% include "BamlChatBundle:Conversation:formMessage.html.twig" %}
     {% endblock %}

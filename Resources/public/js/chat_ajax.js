@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $("#spinner").hide();
-    
+     $('.selectpicker').selectpicker();
     function sendMessage(e)
     {
         $("#spinner").show();
