@@ -12,4 +12,17 @@ use Doctrine\ORM\EntityRepository;
  */
 class ConversationRepository extends EntityRepository
 {
+	public function getConversationWithParticipant($id,$user){
+		$conversation=$this->find($id);
+		if($conversation->getId()!=$id){
+			return null;
+		}
+		$listeConversation=$user->getConversations();
+		foreach($listeConversation as $conver){
+			if($conver->getId()==$conversation->getId()){
+				return $conversation;
+			}
+		}
+		return null;
+	}
 }

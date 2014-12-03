@@ -12,6 +12,16 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 class ChatController extends Controller
 {
+	private function isAuthorizedConversation($user,$id){
+		$conversation=$this->getDoctrine()
+                     ->getManager()
+                     ->getRepository('BamlChatBundle:Conversation')
+                     ->getConversationWithParticipant($id,$user);
+        if(is_null($conversation)){
+	 		return $this->render('BamlChatBundle:Conversation:denied.html.twig');	       	
+        }	
+        return $conversation;	
+	}
    /**
    * @Secure(roles="ROLE_USER")
    */
@@ -28,10 +38,8 @@ class ChatController extends Controller
    */
 	public function seeConversationAction($id)
 	{
-		$conversation=$this->getDoctrine()
-                     ->getManager()
-                     ->getRepository('BamlChatBundle:Conversation')
-                     ->find($id);
+		$user = $this->getUser();
+		$conversation=$this->isAuthorizedConversation($user,$id);
 		$message = new Message();
 		$form = $this->createForm(new MessageType(), $message);
 		return $this->render('BamlChatBundle:Conversation:show.html.twig', array(
@@ -80,6 +88,8 @@ class ChatController extends Controller
    */
     public function newMessageAction($id)
     {
+    	$user=$this->getUser();
+    	$conversation=$this->isAuthorizedConversation($user,$id);
 		$message = new Message();
 		$form = $this->createForm(new MessageType(), $message);
 		$request = $this->get('request');
@@ -121,10 +131,12 @@ class ChatController extends Controller
    */
 	public function listMessageAction($id)
 	{
-		$conversation=$this->getDoctrine()
+		$user=$this->getUser();
+		$conversation=$this->isAuthorizedConversation($user,$id);
+		/*$conversation=$this->getDoctrine()
                      ->getManager()
                      ->getRepository('BamlChatBundle:Conversation')
-                     ->find($id);
+                     ->find($id);*/
 		$messages=$conversation->getMessages();
 		/*$response = new JsonResponse();
 		$response->setData(array('messages'=>$messages));
