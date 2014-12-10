@@ -39,6 +39,9 @@ class ChatController extends Controller
 	public function seeConversationAction($id)
 	{
 		$user = $this->getUser();
+		if($id==0){
+			return $this->render('BamlChatBundle:Conversation:accueil.html.twig');	
+		}
 		$conversation=$this->isAuthorizedConversation($user,$id);
 		$message = new Message();
 		$form = $this->createForm(new MessageType(), $message);

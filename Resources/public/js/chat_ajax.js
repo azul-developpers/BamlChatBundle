@@ -20,9 +20,12 @@ $(document).ready(function(){
     function updateChat()
     {
         var lienAjax=$("#lienAjax").attr('class');
-        $.post(lienAjax, function(data) {
+        if(lienAjax!=="no_ajax"){
+            $.post(lienAjax, function(data) {
             $("#content-table").html(data);
-        });
+            });
+        }
+
         
     }
     function postMessage(data)
