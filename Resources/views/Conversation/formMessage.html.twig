@@ -1,6 +1,7 @@
 <form id="formMessage" action="{{ path('baml_chat_new_message',{ 'id': conversation.id }) }}" method="post" class="form-horizontal" {{ form_enctype(form) }}>
 
 
+
 {{ form_widget(form.text) }}
 {#<input id="chat_submit" name="chat_submit" class="btn btn-success" value="Envoyer" />#}
 <i id="spinner" class="fa fa-spinner fa-spin"></i>

@@ -1,7 +1,7 @@
 {% extends "BamlChatBundle::layout.html.twig" %}
     {% block baml_chat_body %}
     {% block baml_chat_content %}
-	<div id="lienAjax" class="no_ajax" style="display:none"></div>
+	<div id="lienAjax" class="{{ path('baml_chat_list_ajax', {'id': conversation.id}) }}" style="display:none"></div>
     <div id="content_message">  
         <div id="content-table" class="div_chat">
 			<div id="listeMessage">

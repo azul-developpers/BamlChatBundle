@@ -15,23 +15,51 @@ $(document).ready(function(){
     $("#chat_submit").click(function(e){
         e.preventDefault();
         sendMessage(e);
+    });
+    function newConversationForm(e){
+        var lien_new_conversation=$("#lienNewConversation").attr("class");
+        $.post(
+            lien_new_conversation,
+            function(data){
+                $('#new_conversation_modal').html(data);
+                $('#new_conversation_modal').show(1000);
+            }
+        );
+    } 
+    $("#bouton_add_conversation").click(function(e){
+        e.preventDefault();
+        newConversationForm(e);
     }); 
-
+    function newConversationSend(){
+        var lien=$("#formConversation").attr("action");
+        $.post(
+           lien,
+           $( "#formConversation" ).serialize(),function(data){
+                $('#new_conversation_modal').html(data);
+           }
+        );
+        //$("#new_conversation_modal").hide(1000);
+    }
+    $("#new_conversation_submit").click(function(e){
+        e.preventDefault();
+        newConversationSend();
+    });
     function updateChat()
     {
         var lienAjax=$("#lienAjax").attr('class');
-        if(lienAjax!=="no_ajax"){
-            $.post(lienAjax, function(data) {
-            $("#content-table").html(data);
-            });
-        }
-
-        
+        if(lienAjax.substr(lienAjax.length-1,lienAjax.length)!="0")
+        $.post(lienAjax, function(data) {
+        $("#content-table").html(data);
+        });      
     }
     function postMessage(data)
     {
-        
-        $('#listeMessage tr:last').after('<tr><td>'+data.author+'</td><td>'+data.text+'</td><td>'+data.date.date+'</td></tr>');
+        if(data.date!=null){
+            $('#listeMessage tr:last').after('<tr><td>'+data.author+'</td><td>'+data.text+'</td><td>'+data.date.date+'</td></tr>');        
+        }
+        else{
+            $("#content-table").html(data);
+        }
         $("#spinner").hide();
         
     }

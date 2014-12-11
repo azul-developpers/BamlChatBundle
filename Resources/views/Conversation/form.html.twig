@@ -1,5 +1,5 @@
 <div class="well">
-  <form method="post" class="form-horizontal" {{ form_enctype(form) }}>
+  <form id="formConversation" method="post" class="form-horizontal" {{ form_enctype(form) }}>
 <fieldset>
 
 <!-- Form Name -->
@@ -26,9 +26,8 @@
 {{ form_rest(form) }}
 <!-- Button -->
 <div class="control-group">
-  <label class="control-label" for="_submit"></label>
   <div class="controls">
-    <input type="submit" id="_submit" name="_submit" class="btn btn-success" value="Enregister" />
+    <button id="new_conversation_submit" class="btn btn-success">Enregister</button>
   </div>
 </div>
 

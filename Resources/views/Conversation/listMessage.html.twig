@@ -1,18 +1,22 @@
 <div id="content-table" class="div_chat">
 <div id="listeMessage">
-  {% for message in conversation.messages %}
-  <div id="{{message.id}}" class="message_chat">
-    <b>{{ message.author }}</b>
-    <div>
-        {{ message.text }}
+  {% if conversation.id!=0 %}
+    {% for message in conversation.messages %}
+    <div id="{{message.id}}" class="message_chat">
+      <b>{{ message.author }}</b>
+      <div>
+          {{ message.text }}
+      </div>
     </div>
-  </div>
-   {# <tr>
-      <td style="display:none">{{message.id}}</td>
-      <td>{{ message.author }}</td>
-      <td>{{ message.text }}</td>
-      <td>{{ message.sendDate|date('d/m/Y-H:i') }}</td>
-    </tr> #}
-  {% endfor %}
+     {# <tr>
+        <td style="display:none">{{message.id}}</td>
+        <td>{{ message.author }}</td>
+        <td>{{ message.text }}</td>
+        <td>{{ message.sendDate|date('d/m/Y-H:i') }}</td>
+      </tr> #}
+    {% endfor %}
+  {% else %}
+    Sélectionnez une conversation ou créez en une nouvelle.
+  {% endif %}
 </div>
 </div>

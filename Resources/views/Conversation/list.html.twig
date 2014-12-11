@@ -3,10 +3,18 @@
 {% block baml_chat_body %}
   <div id="conversation">
   <select class="selectpicker" id="liste_conversation" name="liste_conversation" data-style="btn-success">
+  			<option value="0">Choisir une conversation...</option> 
         {% for conversation in conversations %}
             <option value="{{conversation.id}}">{{ conversation.title }}</option>
         {% endfor %}
   </select>
-<a href="{{path('baml_chat_new_conversation')}}" class="btn btn-primary" id="bouton_add_conversation"><span class="glyphicon glyphicon-plus"></span></a>
-</div> <br/>
+	<button class="btn btn-primary" id="bouton_add_conversation"><span class="glyphicon glyphicon-plus"></span></button>
+	
+	<div id="new_conversation_modal" class="modal">
+		<div id="lienNewConversation" class="{{path('baml_chat_new_conversation')}}"></div>
+		<div id="new_conversation_content">
+			
+		</div>
+	</div>
+	</div> <br/>
 {% endblock %}

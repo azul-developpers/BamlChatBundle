@@ -10,6 +10,8 @@ use Baml\ChatBundle\Form\MessageType;
 use Baml\ChatBundle\Form\ConversationType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Doctrine\Common\Collections\ArrayCollection;
+
 class ChatController extends Controller
 {
 	private function isAuthorizedConversation($user,$id){
@@ -40,15 +42,16 @@ class ChatController extends Controller
 	{
 		$user = $this->getUser();
 		if($id==0){
-			return $this->render('BamlChatBundle:Conversation:accueil.html.twig');	
+			$conversation=array('id'=>0);	
 		}
-		$conversation=$this->isAuthorizedConversation($user,$id);
+		else{
+			$conversation=$this->isAuthorizedConversation($user,$id);
+		}		
 		$message = new Message();
 		$form = $this->createForm(new MessageType(), $message);
 		return $this->render('BamlChatBundle:Conversation:show.html.twig', array(
 			'form' => $form->createView(),
-			'conversation'   => $conversation,
-			'updateInterval' => 5000
+			'conversation'   => $conversation
 		));		
 	}
    /**
@@ -91,6 +94,9 @@ class ChatController extends Controller
    */
     public function newMessageAction($id)
     {
+    	if($id==0){
+    		return $this->render('BamlChatBundle:Conversation:erreur.html.twig');
+    	}
     	$user=$this->getUser();
     	$conversation=$this->isAuthorizedConversation($user,$id);
 		$message = new Message();
